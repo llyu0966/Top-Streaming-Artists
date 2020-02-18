@@ -40,36 +40,12 @@ class TopStreamingArtists{
     public void TopStreamingAritists(){
         first = null;
     }
+    
     public boolean isEmpty(){
         return(first == null);
     }
     
-    //Function to insert Artist to the end of the list
-    public Artist insert(Artist first, String name){
-        Artist temp = new Artist();
-       
-           temp.name = name;
-           temp.next = first;
-           first = temp;
-        
-        return first;
-    }
-    
-    //public void displayList(Artist first){
-    public void displayList(){
-        while(first != null){
-            System.out.println(first.name + " ");
-            first = first.next;
-        }
-    }
-    
-    public Artist arrayToList(String[][] artistList, int n){
-       first = null;
-       for(int i = 0; i < n; i++)
-           first = insert(first, artistList[i][2].replaceAll("^\"|\"$", ""));
-       return first;
-    }
-    
+    //Function to add Artist names into a sorted linked list
     public void add(String newName){
         //make the new node to insert into list
         Artist newArtist = new Artist(newName);
@@ -100,12 +76,42 @@ class TopStreamingArtists{
         }
     }
     
+    public void displayList(){
+        while(first != null){
+            System.out.println(first.name + " ");
+            first = first.next;
+        }
+    }
+    
+    /**
+     *Unused function
+     *Function to insert Artist to the end of the list
+     *It turns out the artist list with the original order
+     */
+    public Artist insert(Artist first, String name){
+        Artist temp = new Artist();
+        temp.name = name;
+        temp.next = first;
+        first = temp;
+        return first;
+    }
+    
+    //Unused function
+    public Artist arrayToList(String[][] artistList, int n){
+       first = null;
+       for(int i = 0; i < n; i++)
+           first = insert(first, artistList[i][2].replaceAll("^\"|\"$", ""));
+       return first;
+    }
+    
     static Artist first;
 }//end of class TopStreamingArtists
 
-//This class contains the main class
-//aims to opening and reading the data file,
-//and uses available methods above to access data.
+/**
+ *This class contains the main class
+ *aims to opening and reading the data file,
+ *and uses available methods above to access data.
+ */
 public class Artists {
 
     /**
@@ -114,7 +120,7 @@ public class Artists {
      */
     public static void main(String[] args) throws IOException {
        
-        File file = new File("/Users/linliyu/Downloads/regional-us-weekly-2020-01-24--2020-01-31.csv");
+        File file = new File("regional-us-weekly-2020-01-24--2020-01-31.csv");
        
         //Read in the text file and then save the CSV file format into a nested Java array
           int cols = 3;
