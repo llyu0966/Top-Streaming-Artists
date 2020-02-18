@@ -76,6 +76,7 @@ class TopStreamingArtists{
         }
     }
     
+    //public void displayList(Artist first){
     public void displayList(){
         while(first != null){
             System.out.println(first.name + " ");
