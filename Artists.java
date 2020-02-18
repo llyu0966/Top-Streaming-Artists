@@ -13,7 +13,6 @@ import java.util.*;
  * @author linliyu
  */
 
-
 //The List TopStreamingArtists is composed of a series of artist names
 class TopStreamingArtists{
     //nested class node
@@ -78,6 +77,7 @@ class TopStreamingArtists{
     
     //public void displayList(Artist first){
     public void displayList(){
+            System.out.println("\nStage Names(in alphabetical order):");
         while(first != null){
             System.out.println(first.name + " ");
             first = first.next;
@@ -150,6 +150,16 @@ public class Artists {
 //          System.out.println(artistList[i][0] + " " + artistList[i][2].replaceAll("^\"|\"$", ""));
 //          System.out.println();
 //       }
+        //to count the frequency of the artist names on the list
+         ArrayList<String> aList = new ArrayList<>(rows);
+         for(int i = 0; i < rows; i++){
+             aList.add(artistList[i][2].replaceAll("^\"|\"$", ""));
+         }
+         Set<String> distinct = new HashSet<>(aList);
+         System.out.println("Stage Names: Occurrence Frequency");
+         distinct.forEach((s) -> {
+             System.out.println(s + ": " + Collections.frequency(aList, s));
+        });
         
 //PART 2: see who are the music artists in alphabetical order
          TopStreamingArtists artistNames = new TopStreamingArtists();
